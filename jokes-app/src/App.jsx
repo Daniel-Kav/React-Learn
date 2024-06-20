@@ -1,5 +1,6 @@
-import { useReducer } from 'react'
-import './App.scss'
+import { useReducer, useEffect } from 'react';
+import './App.scss';
+import { jokeReducer } from './Reducers/Reducers';
 
 // Define the initial state
 const initialState = [
@@ -28,35 +29,32 @@ const initialState = [
     joke: 'Why was the math book sad? Because it had too many problems.',
     rate: 0
   }
-]
+];
 
-// Define the reducer function
-function jokeReducer(state, action) {
-  switch (action.type) {
-    case 'ADD_JOKE':
-      return [...state, { id: state.length + 1, joke: action.payload, rate: 0 }]
-    case 'UPDATE_RATE':
-      return state.map(joke =>
-        joke.id === action.payload.id ? { ...joke, rate: action.payload.rate } : joke
-      )
-    default:
-      return state
-  }
-}
+
 
 function App() {
-  const [jokes, dispatch] = useReducer(jokeReducer, initialState)
+  // Load jokes from localStorage or initialState
+  const [jokes, dispatch] = useReducer(jokeReducer, [], () => {
+    const storedJokes = localStorage.getItem('jokes');
+    return storedJokes ? JSON.parse(storedJokes) : initialState;
+  });
+
+  // Save jokes to localStorage whenever jokes state changes
+  useEffect(() => {
+    localStorage.setItem('jokes', JSON.stringify(jokes));
+  }, [jokes]);
 
   const updateRate = (id, rate) => {
-    dispatch({ type: 'UPDATE_RATE', payload: { id, rate } })
-  }
+    dispatch({ type: 'UPDATE_RATE', payload: { id, rate } });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    const newJoke = e.target[0].value
-    dispatch({ type: 'ADD_JOKE', payload: newJoke })
-    e.target[0].value = '' // Clear the input field
-  }
+    e.preventDefault();
+    const newJoke = e.target[0].value;
+    dispatch({ type: 'ADD_JOKE', payload: newJoke });
+    e.target[0].value = ''; 
+  };
 
   return (
     <div className='container'>
@@ -77,12 +75,12 @@ function App() {
                   <button onClick={() => updateRate(joke.id, joke.rate - 1)}>👎</button>
                 </div>
               </div>
-            )
+            );
           })
         }
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
