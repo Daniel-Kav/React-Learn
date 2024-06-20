@@ -7,6 +7,9 @@ export function jokeReducer(state, action) {
       return state.map(joke =>
         joke.id === action.payload.id ? { ...joke, rate: action.payload.rate } : joke
       );
+
+    case 'DELETE_JOKE': // Handle deleting a joke
+      return state.filter((joke) => joke.id !== action.payload);
     case 'SET_JOKES':
       return action.payload;
     default:

@@ -1,35 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.scss'
+import { useState } from "react";
+import { useReducer } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+const initialState = {
+  tasks : [],
+  filter: 'all',
 }
 
-export default App
+const taskReduucer = (state, action) => {
+  switch (action.type) {
+    case 'addTask':
+      return {...state, tasks: [...state.tasks, { id: Date.now(), text: action.payload, completed: false }] }
+    case 'toggleTask':
+      return {...state, 
+        tasks: state.tasks.map(task => 
+          task.id === action.payload ? { ...task, completed: !task.completed } : task
+        )
+      }
+      case 'removeTask':
+        return {...state, tasks: state.tasks.filter(task => task.id !== action.payload)};
+      case 'setFilter':
+        return {...state, filter: action.payload};
+      case 'default':
+        return state;
+  }
+}
+
+export function App() {
+  const [state, dispatch] = useReducer(taskReduucer, initialState);
+  const [taskText, setTaskText] = useState('');
+
+  const handleaddTask = (e) => {
+
+    e.preventDefault();
+    if (taskText.trim()) {
+      dispatch({ type: 'addTask', payload: taskText });
+      setTaskText('');
+    }
+  }
+
+  const filteredTasks = state.tasks.filter(task =>{
+    if (state.filter === 'all') return true;
+    if (state.filter === 'active') return !task.completed;
+    if (state.filter === 'completed') return task.completed;
+  });
+
+  return (
+    <div className="todo-container">
+      <h1>To-Do List</h1>
+      <form onSubmit={handleaddTask}>
+        <input 
+        type="text"
+        value={taskText}
+        onChange={(e) => setTaskText(e.target.value)}
+        placeholder="Add a New Task" 
+        />
+        <button type="submit">Add Task</button>
+
+      </form>
+      <div className="filters">
+        <button onClick={() => dispatch({ type: 'setFilter', payload: 'all'})}>All</button>
+        <button onClick={ () => dispatch({})}>Active</button>
+      </div>
+    </div>
+  )
+
+
+}

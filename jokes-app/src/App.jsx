@@ -6,13 +6,13 @@ import { initialState } from './Reducers/jokes';
 
 
 function App() {
-  // Load jokes from localStorage or initialState
+  
   const [jokes, dispatch] = useReducer(jokeReducer, [], () => {
     const storedJokes = localStorage.getItem('jokes');
     return storedJokes ? JSON.parse(storedJokes) : initialState;
   });
 
-  // Save jokes to localStorage whenever jokes state changes
+  
   useEffect(() => {
     localStorage.setItem('jokes', JSON.stringify(jokes));
   }, [jokes]);
@@ -28,9 +28,14 @@ function App() {
       dispatch({ type: 'ADD_JOKE', payload: newJoke });
       e.target[0].value = '';
     }else {
-      alert('Please enter a joke');
+      alert('Please enter a joke ');
     }
   };
+
+  const deleteJoke = (id) => {
+    dispatch({ type: 'DELETE_JOKE', payload: id }); // Dispatch action to delete the joke
+  };
+
 
   return (
     <div className='container'>
@@ -49,6 +54,7 @@ function App() {
                 <div className="joke-buttons">
                   <button onClick={() => updateRate(joke.id, joke.rate + 1)}>👍</button>
                   <button onClick={() => updateRate(joke.id, joke.rate - 1)}>👎</button>
+                  <button onClick={() => deleteJoke(joke.id)}>🗑️</button>
                 </div>
               </div>
             );
