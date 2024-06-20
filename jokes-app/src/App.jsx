@@ -1,35 +1,7 @@
 import { useReducer, useEffect } from 'react';
 import './App.scss';
 import { jokeReducer } from './Reducers/Reducers';
-
-// Define the initial state
-const initialState = [
-  {
-    id: 1,
-    joke: 'What do you call a very small valentine? A valen-tiny!',
-    rate: 3
-  },
-  {
-    id: 2,
-    joke: 'What did the dog say when he rubbed his tail on the sandpaper? Rough, rough!',
-    rate: 2
-  },
-  {
-    id: 3,
-    joke: 'A termite walks into the bar and says, "Where is the bar tender?"',
-    rate: 1
-  },
-  {
-    id: 4,
-    joke: 'Why did the scarecrow win an award? Because he was outstanding in his field!',
-    rate: 0
-  },
-  {
-    id: 5,
-    joke: 'Why was the math book sad? Because it had too many problems.',
-    rate: 0
-  }
-];
+import { initialState } from './Reducers/jokes';
 
 
 
@@ -51,9 +23,13 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newJoke = e.target[0].value;
-    dispatch({ type: 'ADD_JOKE', payload: newJoke });
-    e.target[0].value = ''; 
+    const newJoke = e.target[0].value.trim();
+    if (newJoke) {
+      dispatch({ type: 'ADD_JOKE', payload: newJoke });
+      e.target[0].value = '';
+    }else {
+      alert('Please enter a joke');
+    }
   };
 
   return (

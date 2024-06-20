@@ -1,5 +1,5 @@
 
-const initialState = [
+export const initialState = [
   {
     id: 1,
     joke: 'What do you call a very small valentine? A valen-tiny!',
