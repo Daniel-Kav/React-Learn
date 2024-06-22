@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from 'react';
-import './ToDoApp.scss';
+import './App.scss';
 
 const initialState = {
   tasks: [],
