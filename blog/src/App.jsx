@@ -8,15 +8,17 @@ function App() {
 
   useEffect(()=> {
     fetch('http://localhost:8000/blogs')
-    .then(res => res.json())
-    .then( data => console.log(data) )
+    .then(res => {
+      return res.json();
+    })
+    .then( data => setBlogs(data) )
     .catch(err => console.log(err) );
-  })
+  },[])
 
   return (
     <>
     {/* <NavBar /> */}
-    < BlogList />
+    {blogs && < BlogList blogs={blogs}/>}
     </>
   )
 }
