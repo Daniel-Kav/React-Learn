@@ -1,0 +1,8 @@
+.list div{
+    border: 2px solid yellow !important;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: rgb(109, 66, 10);
+    text-shadow: 20px;
+    width: 600px;
+}
