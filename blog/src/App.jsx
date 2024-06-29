@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import BlogList from './components/BlogList'
 import { useEffect } from 'react'
+import { Bars } from 'react-loader-spinner'
 
 function App() {
   const [blogs , setBlogs] = useState(null)
@@ -18,7 +19,7 @@ function App() {
     setisPending(false)
   })
     .catch(err => console.log(err) );
-    }, 1000)
+    }, 100)
   },[])
 useEffect(() => {
     document.title = 'Blog Using React';
@@ -28,7 +29,15 @@ useEffect(() => {
   return (
     <>
     {/* <NavBar /> */}
-    {isPending && <div>Loading ...</div>}
+    {isPending && <Bars
+  height="80"
+  width="80"
+  color="#4fa94d"
+  ariaLabel="bars-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+  />}
     {blogs && < BlogList blogs={blogs}/>}
     </>
   )
