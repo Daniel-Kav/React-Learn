@@ -1,11 +1,13 @@
-import React from 'react'
+import Button from '@mui/material/Button';
 
 function NavBar() {
   return (
     <div>
         <div className="navbar bg-base-100">
         <div className="flex-1">
+            
             <a className="btn btn-ghost text-xl">daisyUI</a>
+            <input type="checkbox" value="synthwave" className="toggle theme-controller" />
         </div>
         <div className="flex-none">
             <div className="dropdown dropdown-end">
@@ -61,6 +63,7 @@ function NavBar() {
             </div>
         </div>
         </div>
+        <Button variant="contained">Hello world</Button>;
     </div>
   )
 }
