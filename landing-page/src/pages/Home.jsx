@@ -20,6 +20,10 @@ const menuItems = [
     name: 'Blogs',
     href: '/blog',
   },
+  {
+    name: 'Darshboard',
+    href: '/dashboard',
+  },
 ]
 
 export default function LandinngPageOne() {
