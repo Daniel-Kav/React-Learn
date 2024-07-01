@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import LandinngPageOne  from './pages/Home.jsx'
 import Error from './pages/Error.jsx'
 import { AboutPageOne } from './pages/About.jsx'
+import { BlogPageTwo } from './pages/Blog.jsx'
 
 const router =  createBrowserRouter([
   {
@@ -20,7 +21,7 @@ const router =  createBrowserRouter([
   },
   {
     path: 'blog',
-    element: <AboutPageOne />,
+    element: <BlogPageTwo />,
     errorElement: <Error />
   },
   {

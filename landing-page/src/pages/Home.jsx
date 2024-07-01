@@ -14,11 +14,11 @@ const menuItems = [
   },
   {
     name: 'Contact',
-    href: '#',
+    href: '/',
   },
   {
     name: 'Blogs',
-    href: '#',
+    href: '/blog',
   },
 ]
 
