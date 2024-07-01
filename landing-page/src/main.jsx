@@ -5,11 +5,27 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import LandinngPageOne  from './pages/Home.jsx'
 import Error from './pages/Error.jsx'
+import { AboutPageOne } from './pages/About.jsx'
 
 const router =  createBrowserRouter([
   {
     path: '/',
     element: <LandinngPageOne />,
+    errorElement: <Error />
+  },
+  {
+    path: 'about',
+    element: <AboutPageOne />,
+    errorElement: <Error />
+  },
+  {
+    path: 'blog',
+    element: <AboutPageOne />,
+    errorElement: <Error />
+  },
+  {
+    path: 'about',
+    element: <AboutPageOne />,
     errorElement: <Error />
   }
 ])

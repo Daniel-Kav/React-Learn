@@ -6,11 +6,11 @@ import { CheckCircle, ChevronDown, ChevronUp, Menu, Star, X } from 'lucide-react
 const menuItems = [
   {
     name: 'Home',
-    href: '#',
+    href: '/',
   },
   {
     name: 'About',
-    href: '#',
+    href: '/about',
   },
   {
     name: 'Contact',
