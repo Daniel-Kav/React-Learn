@@ -48,7 +48,7 @@ export default function LandinngPageOne() {
                 />
               </svg>
             </span>
-            <span className="font-bold">DevUI</span>
+            <span className="font-bold">DanTY</span>
           </div>
           <div className="hidden lg:block">
             <ul className="inline-flex space-x-8">
@@ -69,7 +69,7 @@ export default function LandinngPageOne() {
               type="button"
               className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
-              Button text
+              Get Started
             </button>
           </div>
           <div className="lg:hidden">
