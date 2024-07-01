@@ -22,7 +22,7 @@ const menuItems = [
   },
 ]
 
-export function LandinngPageOne() {
+export default function LandinngPageOne() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
 
   const toggleMenu = () => {
