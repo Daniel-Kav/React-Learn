@@ -6,7 +6,7 @@ import { Menu, X, MapPin } from 'lucide-react'
 const menuItems = [
   {
     name: 'Home',
-    href: '#',
+    href: '/',
   },
   {
     name: 'About',
@@ -14,7 +14,7 @@ const menuItems = [
   },
   {
     name: 'Contact',
-    href: '#',
+    href: '/contact',
   },
 ]
 

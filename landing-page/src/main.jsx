@@ -7,6 +7,7 @@ import LandinngPageOne  from './pages/Home.jsx'
 import Error from './pages/Error.jsx'
 import { AboutPageOne } from './pages/About.jsx'
 import { BlogPageTwo } from './pages/Blog.jsx'
+import { ContactPageTwo } from './pages/Contacts.jsx'
 
 const router =  createBrowserRouter([
   {
@@ -25,8 +26,8 @@ const router =  createBrowserRouter([
     errorElement: <Error />
   },
   {
-    path: 'about',
-    element: <AboutPageOne />,
+    path: 'contact',
+    element: <ContactPageTwo />,
     errorElement: <Error />
   }
 ])
