@@ -22,7 +22,7 @@ const menuItems = [
   },
   {
     name: 'Darshboard',
-    href: '/dashboard',
+    href: '/darshboard',
   },
 ]
 

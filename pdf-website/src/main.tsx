@@ -13,7 +13,7 @@ import UserProfiles from './components/dashboard/UserProfiles.tsx'
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    elem>,ent: <Home /
     errorElement:<Error/>,
   },
   {

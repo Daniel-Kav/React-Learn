@@ -8,6 +8,7 @@ import Error from './pages/Error.jsx'
 import { AboutPageOne } from './pages/About.jsx'
 import { BlogPageTwo } from './pages/Blog.jsx'
 import { ContactPageTwo } from './pages/Contacts.jsx'
+import Darshboard from './pages/Darshboard.jsx'
 
 const router =  createBrowserRouter([
   {
@@ -28,6 +29,11 @@ const router =  createBrowserRouter([
   {
     path: 'contact',
     element: <ContactPageTwo />,
+    errorElement: <Error />
+  },
+  {
+    path: 'darshboard',
+    element: <Darshboard />,
     errorElement: <Error />
   }
 ])
