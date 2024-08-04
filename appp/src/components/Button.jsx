@@ -1,6 +1,8 @@
 import React from 'react';
+import { person } from './Person';
 
-
+let person3 = new Proxy(person,{});
+console.log(person3);
 
 const Button = () => {
   return (
