@@ -14,7 +14,7 @@ const Person = () => {
     // console.log(person2)
   return (
     <div className='text-center '>
-      person2 && person2.name && person2.age && person2.nationality
+     {person2.name}
     </div>
   )
 }
