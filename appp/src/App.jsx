@@ -10,6 +10,7 @@ const App = () => {
   const number = 40
   return (
     <>
+    <Button />
     < NavBar />
     < Person />
     </>
