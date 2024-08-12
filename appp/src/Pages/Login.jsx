@@ -19,7 +19,7 @@ const Login = () => {
       await axios
         .post(
           "https://car-rental-backend-1.onrender.com/api/login",
-          { email, password, confirmPassword, role: "Patient" },
+          { email, password },
           {
             withCredentials: true,
             headers: { "Content-Type": "application/json" },
